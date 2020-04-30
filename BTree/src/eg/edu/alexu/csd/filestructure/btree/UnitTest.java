@@ -732,23 +732,18 @@ public class UnitTest {
          * According to each change you should modify the expected variable to have the expected outcome.
          */
         try {
-            /*searchEngine.indexWebPage("res\\wiki_00");
-            List<ISearchResult> expected = Arrays.asList(new SearchResult[]{new SearchResult("7697605", 1), new SearchResult("7697611", 8)});
-            List<ISearchResult> actual = searchEngine.searchByWordWithRanking("THISISTESTWord");
-            for (ISearchResult searchRes : actual) {
-                System.out.println(searchRes.toString());
-            }
-            Collections.sort(actual, new Comparator<ISearchResult>() {
-                @Override
-                public int compare(ISearchResult o1, ISearchResult o2) {
-                    return o1.getRank() - o2.getRank();
-                }
-            });
-
+            searchEngine.indexWebPage("res\\wiki_00");
+            List<ISearchResult> expected = Arrays.asList(new SearchResult[]{new SearchResult("7698650",2),new SearchResult("7698684",1),new SearchResult("7698798",1)
+                    ,new SearchResult("7699208",6) , new SearchResult("7699718",2), new SearchResult("7699736",1) ,
+                    new SearchResult("7699785",1) , new SearchResult("7699904",1) , new SearchResult("7700578",1) ,
+                    new SearchResult("7700683",1) , new SearchResult("7701313",1) , new SearchResult("7701711",1) ,
+                    new SearchResult("7701773",1) , new SearchResult("7702022",2) , new SearchResult("7702313",1) ,
+                    new SearchResult("7702522",1) });
+            List<ISearchResult> actual = searchEngine.searchByWordWithRanking("CHarACter");
             for (int i = 0; i < expected.size(); i++) {
                 Assert.assertEquals(expected.get(i).getId(), actual.get(i).getId());
                 Assert.assertEquals(expected.get(i).getRank(), actual.get(i).getRank());
-            }*/
+            }
         } catch (Throwable e) {
             TestRunner.fail("Fail to index web page", e);
         }
@@ -798,23 +793,16 @@ public class UnitTest {
          * According to each change you should modify the expected variable to have the expected outcome.
          */
         try {
-            /*searchEngine.indexDirectory("res");
-            List<ISearchResult> expected = Arrays.asList(new SearchResult[]{new SearchResult("7697605", 1), new SearchResult("7702780", 3), new SearchResult("7697611", 8)});
-            List<ISearchResult> actual = searchEngine.searchByWordWithRanking("THISISTESTWord");
-            for (ISearchResult searchRes : actual) {
-                System.out.println(searchRes.toString());
-            }
-            Collections.sort(actual, new Comparator<ISearchResult>() {
-                @Override
-                public int compare(ISearchResult o1, ISearchResult o2) {
-                    return o1.getRank() - o2.getRank();
-                }
-            });
-
+            searchEngine.indexDirectory("res");
+            List<ISearchResult> expected = Arrays.asList(new SearchResult[]{ new SearchResult("7699963",1),
+                    new SearchResult("7701029",1)
+                    ,new SearchResult("7725128", 1),new SearchResult("7725295",1),new SearchResult("7728090",1),
+                    new SearchResult("7732042", 1),new SearchResult("7734114", 1)});
+            List<ISearchResult> actual = searchEngine.searchByWordWithRanking("FLOurish");
             for (int i = 0; i < expected.size(); i++) {
                 Assert.assertEquals(expected.get(i).getId(), actual.get(i).getId());
                 Assert.assertEquals(expected.get(i).getRank(), actual.get(i).getRank());
-            }*/
+            }
         } catch (Throwable e) {
             TestRunner.fail("Fail to index directory", e);
         }
@@ -838,23 +826,13 @@ public class UnitTest {
          * According to each change you should modify the expected variable to have the expected outcome.
          */
         try {
-            /*searchEngine.indexDirectory("res");
-            List<ISearchResult> expected = Arrays.asList(new SearchResult[]{new SearchResult("7712144", 1), new SearchResult("7708196", 2)});
-            List<ISearchResult> actual = searchEngine.searchByWordWithRanking("THISIStESTWORDFORSUBFOLDER");
-            for (ISearchResult searchRes : actual) {
-                System.out.println(searchRes.toString());
-            }
-            Collections.sort(actual, new Comparator<ISearchResult>() {
-                @Override
-                public int compare(ISearchResult o1, ISearchResult o2) {
-                    return o1.getRank() - o2.getRank();
-                }
-            });
-
+            searchEngine.indexDirectory("res");
+            List<ISearchResult> expected = Arrays.asList(new SearchResult[]{new SearchResult("7708134", 1)});
+            List<ISearchResult> actual = searchEngine.searchByWordWithRanking("CHUBby");
             for (int i = 0; i < expected.size(); i++) {
                 Assert.assertEquals(expected.get(i).getId(), actual.get(i).getId());
                 Assert.assertEquals(expected.get(i).getRank(), actual.get(i).getRank());
-            }*/
+            }
         } catch (Throwable e) {
             TestRunner.fail("Fail to index directory", e);
         }
@@ -903,23 +881,12 @@ public class UnitTest {
          * According to each change you should modify the expected variable to have the expected outcome.
          */
         try {
-            /*searchEngine.indexDirectory("res");
+            searchEngine.indexDirectory("res");
             searchEngine.deleteWebPage("res\\wiki_00");
-            List<ISearchResult> expected = Arrays.asList(new SearchResult[]{new SearchResult("7702780", 1)});
-            List<ISearchResult> actual = searchEngine.searchByWordWithRanking("DELETEWORD");
-            for (ISearchResult searchRes : actual) {
-                System.out.println(searchRes.toString());
-            }
-            Collections.sort(actual, new Comparator<ISearchResult>() {
-                @Override
-                public int compare(ISearchResult o1, ISearchResult o2) {
-                    return o1.getRank() - o2.getRank();
-                }
-            });
-            for (int i = 0; i < expected.size(); i++) {
-                Assert.assertEquals(expected.get(i).getId(), actual.get(i).getId());
-                Assert.assertEquals(expected.get(i).getRank(), actual.get(i).getRank());
-            }*/
+            searchEngine.deleteWebPage("res\\wiki_01");
+            List<ISearchResult> expected = Arrays.asList(new SearchResult[]{});
+            List<ISearchResult> actual = searchEngine.searchByWordWithRanking("rothBARDS");
+            Assert.assertEquals(0, actual.size());
         } catch (Throwable e) {
             TestRunner.fail("Fail to delete web page", e);
         }
@@ -942,24 +909,15 @@ public class UnitTest {
          * According to each change you should modify the expected variable to have the expected outcome.
          */
         try {
-            /*searchEngine.indexWebPage("res\\wiki_00");
-            searchEngine.indexWebPage("res\\subfolder\\wiki_02");
+            searchEngine.indexWebPage("res\\wiki_00");
+            searchEngine.indexWebPage("res\\wiki_02");
             searchEngine.deleteWebPage("res\\wiki_01");
-            List<ISearchResult> expected = Arrays.asList(new SearchResult[]{new SearchResult("7697611", 1)});
+            List<ISearchResult> expected = Arrays.asList(new SearchResult[]{});
             List<ISearchResult> actual = searchEngine.searchByWordWithRanking("testDeleteWebPageUnIndexedWebPage");
-            for (ISearchResult searchRes : actual) {
-                System.out.println(searchRes.toString());
-            }
-            Collections.sort(actual, new Comparator<ISearchResult>() {
-                @Override
-                public int compare(ISearchResult o1, ISearchResult o2) {
-                    return o1.getRank() - o2.getRank();
-                }
-            });
             for (int i = 0; i < expected.size(); i++) {
                 Assert.assertEquals(expected.get(i).getId(), actual.get(i).getId());
                 Assert.assertEquals(expected.get(i).getRank(), actual.get(i).getRank());
-            }*/
+            }
         } catch (Throwable e) {
             TestRunner.fail("Fail to delete web page", e);
         }
@@ -974,11 +932,11 @@ public class UnitTest {
         ISearchEngine searchEngine = (ISearchEngine) TestRunner.getImplementationInstanceForInterface(ISearchEngine.class, new Object[]{100});
 
         try {
-            searchEngine.indexWebPage("res\\wiki_00");
+            searchEngine.indexWebPage("res\\wiki_02");
             searchEngine.indexWebPage("res\\wiki_01");
-            searchEngine.indexWebPage("res\\subfolder\\wiki_02");
+            searchEngine.indexWebPage("res\\wiki_00");
             searchEngine.deleteWebPage("res\\wiki_01");
-            searchEngine.deleteWebPage("res\\subfolder\\wiki_02");
+            searchEngine.deleteWebPage("res\\wiki_02");
             searchEngine.deleteWebPage("res\\wiki_00");
 
             List<ISearchResult> actual = searchEngine.searchByWordWithRanking("ThE");
@@ -1046,23 +1004,12 @@ public class UnitTest {
          * According to each change you should modify the expected variable to have the expected outcome.
          */
         try {
-           /* searchEngine.indexDirectory("res");
-            List<ISearchResult> expected = Arrays.asList(new SearchResult[]{new SearchResult("7702780", 1), new SearchResult("7697611", 3)});
-            List<ISearchResult> actual = searchEngine.searchByMultipleWordWithRanking(" word1d word2d     word3d 	");
+            searchEngine.indexDirectory("res");
+            List<ISearchResult> expected = Arrays.asList(new SearchResult[]{new SearchResult("7721716", 1)});
+            List<ISearchResult> actual = searchEngine.searchByMultipleWordWithRanking("the Izvorul Olt StatIon oF RoMaNian 	");
             for (ISearchResult searchRes : actual) {
                 System.out.println(searchRes.toString());
             }
-            Collections.sort(actual, new Comparator<ISearchResult>() {
-                @Override
-                public int compare(ISearchResult o1, ISearchResult o2) {
-                    return o1.getRank() - o2.getRank();
-                }
-            });
-
-            for (int i = 0; i < expected.size(); i++) {
-                Assert.assertEquals(expected.get(i).getId(), actual.get(i).getId());
-                Assert.assertEquals(expected.get(i).getRank(), actual.get(i).getRank());
-            }*/
         } catch (Throwable e) {
             TestRunner.fail("Fail to index directory", e);
         }
