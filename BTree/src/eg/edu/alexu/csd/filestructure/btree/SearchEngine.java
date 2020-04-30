@@ -195,32 +195,19 @@ public class SearchEngine implements ISearchEngine {
             }
         }
         IBTree<String,Integer> temp = new BTree<>(this.minDegree);
-        List<String> words = new LinkedList<>();
-        List<Integer> freq = new LinkedList<>();
         String[] x = text.split(" ");
         for (int i = 0 ; i < x.length ; i++ ){
-            int h = contain(words,x[i]);
-            if(h != -1 ){
-                freq.set(h , freq.get(h)+1 );
+            Integer h = temp.search(x[i]) ;
+            if(h != null ){
+                temp.delete(x[i]);
+                temp.insert(x[i],h+1);
             }
             else{
-                words.add(x[i]);
-                freq.add(1);
+                temp.insert(x[i],1);
             }
-        }
-        for (int i = 0 ; i < words.size() ; i++){
-            temp.insert(words.get(i),freq.get(i));
         }
         return temp ;
     }    // parse text to words and count their frequencies and add them to B tree
-
-    private int contain (List<String> x , String h){
-        for (int i = 0 ; i < x.size() ; i++){
-            if (h.equals(x.get(i)))
-                return  i ;
-        }
-        return -1 ;
-    }  //check if list of strings has a specific string
 
     private int min (Integer[] arr){
         int min = arr[0];

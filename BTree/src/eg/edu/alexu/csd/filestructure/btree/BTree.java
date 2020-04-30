@@ -111,11 +111,11 @@ public class BTree<K extends Comparable<K>,V> implements IBTree<K,V> {
                 }
             }
         }
-        if(temp == this.root && temp.getKeys().size() == 1){
-            this.root = null ;
-            return true ;
-        }
         if(temp.isLeaf()){
+            if (temp == this.root && temp.getKeys().size() == 1){
+                this.root = null ;
+                return true ;
+            }
             temp.getKeys().remove(deletionIndex);
             temp.getValues().remove(deletionIndex);
             checkMin(temp);
@@ -131,13 +131,13 @@ public class BTree<K extends Comparable<K>,V> implements IBTree<K,V> {
                 temp.getKeys().set(deletionIndex , pree );
                 temp.getValues().set(deletionIndex , preeValue);
                 pre.getKeys().remove(pree);
-                pre.getValues().remove(preeValue);
+                pre.getValues().remove(pre.getValues().size()-1);
             }
             else if (  suc.getKeys().size() >= this.minDegree  ){
                 temp.getKeys().set(deletionIndex , succ );
                 temp.getValues().set(deletionIndex , succValue);
                 suc.getKeys().remove(succ);
-                suc.getValues().remove(succValue);
+                suc.getValues().remove(suc.getValues().size()-1);
             }
             else{
                 if(temp.getChildren().contains(suc)){
